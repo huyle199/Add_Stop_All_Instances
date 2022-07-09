@@ -16,4 +16,6 @@ instances = ec2.create_instances(
                                        'Value': 'Sunshine'},
                                        {
                                        'Key': 'Environment','Value': 'Developer'}]
-                                                
+                                                },
+                                              ],
+                                              )
