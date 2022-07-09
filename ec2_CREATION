@@ -1,21 +1,23 @@
 import boto3
 
-client = boto3.client('ec2', region_name='us-west-2')
-instances = ec2.create_instances(
-        ImageId="ami-098e42ae54c764c35",
+client = boto3.client('ec2',region_name='us-east-1')
+response = client.create_key_pair(KeyName='boto4')
+instances = client.run_instances(
+        ImageId="ami-0cff7528ff583bf9a",
         MinCount=3,
         MaxCount=3,
         InstanceType="t2.micro",
-        KeyName="tier-3a"
+        KeyName="boto4",
         TagSpecifications=[
-                                 {
-                                     'ResourceType': 'instance',
-                                      'Tags': [
-                                       {
-                                       'Key': 'Name',
-                                       'Value': 'Sunshine'},
-                                       {
-                                       'Key': 'Environment','Value': 'Developer'}]
-                                                },
-                                              ],
-                                              )
+          {
+            'ResourceType': 'instance',
+             'Tags': [
+              {
+                'Key': 'Name',
+                'Value': 'Sunshine'},
+              {
+                'Key': 'Environment','Value': 'Developer'}]
+                              },
+                             ],
+                             )
+            
