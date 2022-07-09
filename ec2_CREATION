@@ -1,0 +1,19 @@
+import boto3
+
+client = boto3.client('ec2', region_name='us-west-2')
+instances = ec2.create_instances(
+        ImageId="ami-098e42ae54c764c35",
+        MinCount=3,
+        MaxCount=3,
+        InstanceType="t2.micro",
+        KeyName="tier-3a"
+        TagSpecifications=[
+                                 {
+                                     'ResourceType': 'instance',
+                                      'Tags': [
+                                       {
+                                       'Key': 'Name',
+                                       'Value': 'Sunshine'},
+                                       {
+                                       'Key': 'Environment','Value': 'Developer'}]
+                                                
